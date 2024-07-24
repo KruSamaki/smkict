@@ -6,8 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ICT Academy</title>
     <style>
+        @font-face {
+            font-family: 'battambang';
+            src: url('fonts/Battambang.ttf');
+        }
+        @font-face {
+            font-family: 'moul';
+            src: url(fonts/Khmer\ OS\ Moul.ttf);
+        }
         body {
-            font-family: 'Arial, sans-serif';
+            font-family:'battambang', 'Arial, sans-serif';
             margin: 0;
             padding: 0;
             background-color: #f7f7f7;
@@ -46,9 +54,10 @@
             overflow-y: auto;
             height: calc(100vh - 100px);
             position: fixed;
-            top: 80px;
+            top: 65px;
             left: 0;
             transition: transform 0.3s ease-in-out;
+            z-index: 999999;
         }
 
         .sidebar h2 {
@@ -72,10 +81,13 @@
             transition: color 0.3s;
         }
 
-        .sidebar ul li a:hover,
-        .sidebar ul li a.active {
+        .sidebar ul li.active a {
             color: #253C99;
             font-weight: bold;
+        }
+
+        .sidebar ul li a:hover {
+            color: #253C99;
         }
 
         .content {
@@ -117,7 +129,6 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             font-size: 2.5rem;
             text-align: center;
-            animation: fadeInCover 1s ease-in-out;
         }
 
         .description {
@@ -139,7 +150,6 @@
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            animation: fadeInGrid 1s ease-in-out;
         }
 
         .fade-in {
@@ -201,16 +211,14 @@
             top: 0;
             z-index: 99999999;
         }
-
-        .titlenav {
+        .titlenav{
             padding-left: 50px;
-            padding-top: 10px;
+            /* padding-top: 10px; */
+            font-family: 'moul',system-ui;
         }
-
         .navigation .title {
             font-size: 24px;
         }
-
         .menu-button {
             background: none;
             border: none;
@@ -220,7 +228,6 @@
             margin-top: -20px;
             padding-right: 40px;
         }
-
         .language-buttons img {
             width: 34px;
             height: 24px;
@@ -228,46 +235,12 @@
             cursor: pointer;
             margin-top: 10px;
         }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInCover {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInGrid {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
     </style>
 </head>
 
 <body>
     <div class="navigation">
-        <div data-en="Book 3" data-km="សៀវភៅ ៣" class="titlenav">Library</div>
+        <div data-en="ICT Learning-Samaki School" data-km="អាយស៊ីធី អនុវិទ្យាល័យសាមគ្គី" class="titlenav">ICT Learning-Samaki</div>
         <button class="menu-button" onclick="toggleSidebar()">☰</button>
         <div class="language-buttons">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg/640px-Flag_of_the_United_Kingdom_%281-2%29.svg.png" alt="English" onclick="changeLanguage('en')">
@@ -289,11 +262,11 @@
             </ul>
         </div>
         <div class="content" id="content">
-            <div class="cover">
+            <div data-en="ICT Learning-Samaki School" data-km="អាយស៊ីធី អនុវិទ្យាល័យសាមគ្គី" class="cover">
                 Welcome to ICT Academy
             </div>
             <div class="description">
-                <h1>About Our Students and ICT</h1>
+                <h1 >About Our Students and ICT</h1>
                 <p>
                     Our students are passionate about technology and innovation. At ICT Academy, we provide the tools and knowledge to help students excel in the ever-evolving world of Information and Communication Technology. Our curriculum is designed to foster creativity, critical thinking, and practical skills.
                 </p>
@@ -325,14 +298,38 @@
     <script>
         const lessonsData = {
             ict: [
-                { title: 'Lesson 1: Introduction to HTML', content: 'HTML (HyperText Markup Language) is the standard markup language for creating web pages. It is the most basic building block of the Web. HTML describes the structure of a Web page, and it consists of a series of elements which tell the browser how to display the content.' },
-                { title: 'Lesson 2: Introduction to CSS', content: 'CSS (Cascading Style Sheets) is a stylesheet language used for describing the presentation of a document written in HTML or XML. CSS describes how elements should be rendered on screen, on paper, in speech, or on other media.' },
-                { title: 'Lesson 3: Introduction to JavaScript', content: 'JavaScript is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS. It enables interactive web pages and is an essential part of web applications.' },
+                {
+                    title: 'Lesson 1: Introduction to HTML',
+                    content: 'HTML (HyperText Markup Language) is the standard markup language for creating web pages. It is the most basic building block of the Web. HTML describes the structure of a Web page, and it consists of a series of elements which tell the browser how to display the content.',
+                    media: '',
+                },
+                {
+                    title: 'Lesson 2: Introduction to CSS',
+                    content: 'CSS (Cascading Style Sheets) is a stylesheet language used for describing the presentation of a document written in HTML or XML. CSS describes how elements should be rendered on screen, on paper, in speech, or on other media.',
+                    media: '',
+                },
+                {
+                    title: 'Lesson 3: Introduction to JavaScript',
+                    content: 'JavaScript is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS. It enables interactive web pages and is an essential part of web applications.',
+                    media: '<img src="https://via.placeholder.com/600x400" alt="JavaScript Image">',
+                },
             ],
             fundamental: [
-                { title: 'Lesson 1: Basics of Computer', content: 'A computer is an electronic device that manipulates information, or data. It has the ability to store, retrieve, and process data. You may already know that you can use a computer to type documents, send email, play games, and browse the Web.' },
-                { title: 'Lesson 2: Operating Systems', content: 'An operating system (OS) is system software that manages computer hardware, software resources, and provides common services for computer programs. The OS is a vital component of the system software in a computer system.' },
-                { title: 'Lesson 3: Computer Networks', content: 'A computer network is a group of computers that use a set of common communication protocols over digital interconnections for the purpose of sharing resources located on or provided by the network nodes.' },
+                {
+                    title: 'Lesson 1: Basics of Computer',
+                    content: 'A computer is an electronic device that manipulates information, or data. It has the ability to store, retrieve, and process data. You may already know that you can use a computer to type documents, send email, play games, and browse the Web.',
+                    media: '<img src="https://via.placeholder.com/600x400" alt="Computer Basics Image">',
+                },
+                {
+                    title: 'Lesson 2: Operating Systems',
+                    content: 'An operating system (OS) is system software that manages computer hardware, software resources, and provides common services for computer programs. The OS is a vital component of the system software in a computer system.',
+                    media: '<video width="600" controls><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">Your browser does not support the video tag.</video>',
+                },
+                {
+                    title: 'Lesson 3: Computer Networks',
+                    content: 'A computer network is a group of computers that use a set of common communication protocols over digital interconnections for the purpose of sharing resources located on or provided by the network nodes.',
+                    media: '',
+                },
             ]
         };
 
@@ -346,7 +343,7 @@
         function showHome() {
             const contentDiv = document.getElementById('content');
             contentDiv.innerHTML = `
-                <div class="cover">
+                <div data-en="Welcome to ICT -SAMAKI School" data-km="ស្វាគមន៍មកកាន់អាយស៊ីធីអនុវិទ្យាល័យសាមគ្គី" class="cover">
                     Welcome to ICT Academy
                 </div>
                 <div class="description">
@@ -384,13 +381,14 @@
 
             lessonsData[subject].forEach((lesson, index) => {
                 const lessonItem = document.createElement('li');
+                lessonItem.classList.add('lesson-item');
+                if (index === 0) {
+                    lessonItem.classList.add('active');
+                }
                 const lessonLink = document.createElement('a');
                 lessonLink.href = '#';
                 lessonLink.textContent = lesson.title;
-                lessonLink.onclick = () => {
-                    showLesson(index);
-                    setActiveLesson(index);
-                };
+                lessonLink.onclick = () => showLesson(index);
                 lessonItem.appendChild(lessonLink);
                 lessonsList.appendChild(lessonItem);
             });
@@ -402,49 +400,49 @@
             currentLessonIndex = index;
             const lesson = lessonsData[currentSubject][index];
             const contentDiv = document.getElementById('content');
-            contentDiv.innerHTML = `<h1>${lesson.title}</h1><div class="fade-in">${lesson.content}</div>`;
+            contentDiv.innerHTML = `
+                <h1>${lesson.title}</h1>
+                <div class="fade-in">${lesson.content}</div>
+                <div>${lesson.media}</div>
+            `;
             contentDiv.innerHTML += `
                 <div class="nav-buttons">
                     <button onclick="prevLesson()" ${index === 0 ? 'disabled' : ''}>Previous</button>
                     <button onclick="nextLesson()" ${index === lessonsData[currentSubject].length - 1 ? 'disabled' : ''}>Next</button>
                 </div>
             `;
+
+            document.querySelectorAll('.lesson-item').forEach((item, idx) => {
+                if (idx === index) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
         }
 
         function nextLesson() {
             if (currentLessonIndex < lessonsData[currentSubject].length - 1) {
                 showLesson(currentLessonIndex + 1);
-                setActiveLesson(currentLessonIndex + 1);
             }
         }
 
         function prevLesson() {
             if (currentLessonIndex > 0) {
                 showLesson(currentLessonIndex - 1);
-                setActiveLesson(currentLessonIndex - 1);
             }
         }
 
-        function setActiveLesson(index) {
-            const lessonLinks = document.querySelectorAll('#lessons-list a');
-            lessonLinks.forEach((link, i) => {
-                if (i === index) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-        }
+        // Initialize with home screen
+        showHome();
 
+        // Change languages
         function changeLanguage(lang) {
             const elements = document.querySelectorAll('[data-en]');
             elements.forEach(element => {
                 element.innerText = element.getAttribute('data-' + lang);
             });
         }
-
-        // Initialize with home screen
-        showHome();
     </script>
 </body>
 
